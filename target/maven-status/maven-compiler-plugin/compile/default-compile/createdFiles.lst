@@ -1,0 +1,5 @@
+com\example\mapper\NovelMapper.class
+com\example\mapper\UserMapper.class
+com\example\pojo\UserDemo.class
+com\example\pojo\Novel.class
+com\example\pojo\User.class

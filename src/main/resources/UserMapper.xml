@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.UserMapper">
+
+
+
+    <!--    查询所有-->
+    <select id="findAll" resultType="com.example.pojo.User">
+        select * from test.user;
+    </select>
+<!--  通过关键字查询  -->
+    <select id="selectByKeyword" resultType="com.example.pojo.Novel">
+        select * from test.dec where title like concat('%', #{keyword}, '%')
+    </select>
+
+<!--用户注册-->
+    <insert id="insertUser">
+        insert into test.user (name, age) values (#{name}, #{age})
+    </insert>
+<!--用户登陆-->
+    <select id="getUserByUsernameAndPassword" resultType="com.example.pojo.LogInUser">
+        select * from users where username = #{username} and password = #{password}
+    </select>
+<!--用户个人信息修改-->
+    <update id="updateUser">
+        UPDATE users
+        <set>
+            <if test="username != null">username=#{username},</if>
+            <if test="password != null">password=#{password},</if>
+            <if test="email != null">email=#{email},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+</mapper>
